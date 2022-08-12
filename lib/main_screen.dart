@@ -21,6 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<ExchangeViewModel>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('환율 조회'),
@@ -34,7 +35,6 @@ class _MainScreenState extends State<MainScreen> {
                 onTap: () {
                   if (_controller.text.isNotEmpty) {
                     viewModel.fetchConversionRates(_controller.text);
-                    // print(viewModel.conversionRates);
                   }
                 },
                 child: const Icon(Icons.search),
@@ -45,9 +45,13 @@ class _MainScreenState extends State<MainScreen> {
             child: ListView.builder(
                 itemCount: viewModel.shownList.length,
                 itemBuilder: (context, int index) {
-                  return Text(viewModel
-                      .conversionRates[viewModel.shownList[index]]
-                      .toString());
+                  return Row(
+                    children: [
+                      Text(viewModel.shownList[index].toString()),
+                      SizedBox(width: 5),
+                      Text(viewModel.valueList[index].toString()),
+                    ],
+                  );
                 }),
           ),
         ],

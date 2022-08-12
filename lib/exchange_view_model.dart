@@ -5,10 +5,12 @@ class ExchangeViewModel extends ChangeNotifier {
   final _exchangeRateApi = ExchangeRateApi();
   Map<String, dynamic> conversionRates = {};
   List<String> shownList = [];
+  List<dynamic> valueList = [];
 
   Future fetchConversionRates(String query) async {
     conversionRates = await _exchangeRateApi.getConversionRates(query);
     shownList = conversionRates.keys.toList();
+    valueList = conversionRates.values.toList();
     notifyListeners();
   }
 }
