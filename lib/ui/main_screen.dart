@@ -1,4 +1,4 @@
-import 'package:exchange_currency_app/exchange_view_model.dart';
+import 'package:exchange_currency_app/ui/exchange_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -47,8 +47,11 @@ class _MainScreenState extends State<MainScreen> {
                 itemBuilder: (context, int index) {
                   return Row(
                     children: [
-                      Text(viewModel.shownList[index].toString()),
-                      SizedBox(width: 5),
+                      Text(
+                        viewModel.shownList[index].toString(),
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      const SizedBox(width: 5),
                       Text(viewModel.valueList[index].toString()),
                     ],
                   );

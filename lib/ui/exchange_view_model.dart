@@ -1,16 +1,21 @@
-import 'package:exchange_currency_app/exchange_rate_api.dart';
+import 'package:exchange_currency_app/data/repository/exchange_rate_repository.dart';
 import 'package:flutter/material.dart';
 
 class ExchangeViewModel extends ChangeNotifier {
-  final _exchangeRateApi = ExchangeRateApi();
+  final _repository = ExchangeRateRepository();
   Map<String, dynamic> conversionRates = {};
   List<String> shownList = [];
   List<dynamic> valueList = [];
+  bool isLoading = false;
 
   Future fetchConversionRates(String query) async {
-    conversionRates = await _exchangeRateApi.getConversionRates(query);
+    isLoading = true;
+    notifyListeners();
+
+    conversionRates = await _repository.getConversionRates(query);
     shownList = conversionRates.keys.toList();
     valueList = conversionRates.values.toList();
+    isLoading = false;
     notifyListeners();
   }
 }

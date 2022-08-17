@@ -1,11 +1,15 @@
-import 'package:exchange_currency_app/exchange_view_model.dart';
-import 'package:exchange_currency_app/main_screen.dart';
+import 'package:exchange_currency_app/ui/exchange_view_model.dart';
+import 'package:exchange_currency_app/ui/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-      create: (context) => ExchangeViewModel(), child: const MyApp()));
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => ExchangeViewModel()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
