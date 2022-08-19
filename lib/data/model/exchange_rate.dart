@@ -1,11 +1,13 @@
 class ExchangeRate {
-  final Map<String, dynamic> conversionRates;
+  final String imageUrl;
+  final String countryName;
+  final String currency;
+  final num conversionRate;
 
-  ExchangeRate({required this.conversionRates});
-
-  factory ExchangeRate.fromJson(Map<String, dynamic> json) {
-    return ExchangeRate(
-      conversionRates: json['conversion_rates'] as Map<String, dynamic>,
-    );
-  }
+  ExchangeRate({
+    required this.imageUrl,
+    required this.countryName,
+    required this.currency,
+    required this.conversionRate,
+  });
 }

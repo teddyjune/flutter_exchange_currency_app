@@ -1,4 +1,4 @@
-import 'package:exchange_currency_app/data/data_source/exchange_rate_api.dart';
+import 'package:exchange_currency_app/data/data_source/remote/exchange_rate_api.dart';
 
 class ExchangeRateRepository {
   final _api = ExchangeRateApi();
