@@ -9,14 +9,12 @@ class ExchangeViewModel extends ChangeNotifier {
   List<ExchangeRate> get exchangeRates => List.unmodifiable(_exchangeRates);
   bool isLoading = false;
 
-  Future fetchConversionRates(String query) async {
+  void onSearch(String query) async {
     isLoading = true;
     notifyListeners();
 
-    void onSearch(String query) async {
-      _exchangeRates = await _repository.getExchangeRateList(query);
-      isLoading = false;
-      notifyListeners();
-    }
+    _exchangeRates = await _repository.getExchangeRateList(query);
+    isLoading = false;
+    notifyListeners();
   }
 }
